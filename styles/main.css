@@ -15,7 +15,7 @@ h1 {
           justify-content: center;
   grid-template-columns: repeat(7, 100px);
   grid-gap: 1px;
-  counter-reset: day-number;
+  counter-reset: day;
   font: 30px Arial, sans-serif; }
   .calendar div {
     display: -webkit-box;
@@ -40,41 +40,44 @@ h1 {
     -webkit-transition: 0.3s linear;
     transition: 0.3s linear; }
   .calendar div::before {
-    counter-increment: day-number;
-    content: counter(day-number); }
+    counter-increment: day;
+    content: counter(day); }
   .calendar div:hover {
     cursor: pointer;
     background-color: pink;
     margin-top: -20px; }
 
-.calendar-mon div:nth-of-type(1) {
+.calendar-mon div:first-child {
   grid-column-start: 1; }
 
-.calendar-tue div:nth-of-type(1) {
+.calendar-tue div:first-child {
   grid-column-start: 2; }
 
-.calendar-wed div:nth-of-type(1) {
+.calendar-wed div:first-child {
   grid-column-start: 3; }
 
-.calendar-thu div:nth-of-type(1) {
+.calendar-thu div:first-child {
   grid-column-start: 4; }
 
-.calendar-fri div:nth-of-type(1) {
+.calendar-fri div:first-child {
   grid-column-start: 5; }
 
-.calendar-sat div:nth-of-type(1) {
+.calendar-sat div:first-child {
   grid-column-start: 6; }
 
-.calendar-sun div:nth-of-type(1) {
+.calendar-sun div:first-child {
   grid-column-start: 7; }
 
-.calendar-28 div:nth-of-type(n+29) {
+.calendar-28 div:nth-child(28) ~ div {
   display: none; }
 
-.calendar-29 div:nth-of-type(n+30) {
+.calendar-29 div:nth-child(29) ~ div {
   display: none; }
 
-.calendar-30 div:nth-of-type(n+31) {
+.calendar-30 div:nth-child(30) ~ div {
+  display: none; }
+
+.calendar-31 div:nth-child(31) ~ div {
   display: none; }
 
 body {
