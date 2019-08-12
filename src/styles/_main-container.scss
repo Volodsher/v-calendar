@@ -3,7 +3,8 @@
   justify-content: center;
   grid-template-columns: repeat(7, 100px);
   grid-gap: 1px;
-  counter-reset: day-number;
+
+  counter-reset: day;
   font: 30px Arial, sans-serif;
 
   & div {
@@ -20,13 +21,35 @@
   }
 
   & div::before {
-    counter-increment: day-number;
-    content: counter(day-number);
+    counter-increment: day;
+    content: counter(day);
   }
 
   & div:hover {
     cursor: pointer;
     background-color: pink;
     margin-top: -20px;
+  }
+}
+
+$week-days:
+  mon,
+  tue,
+  wed,
+  thu,
+  fri,
+  sat,
+  sun
+;
+
+@for $n from 1 through length($week-days) {
+  .calendar-#{nth($week-days, $n)} div:first-child {
+    grid-column-start: #{$n};
+  }
+}
+
+@for $n from 28 through 31 {
+  .calendar-#{$n} div:nth-child(#{$n}) ~ div {
+    display: none;
   }
 }
